@@ -1,0 +1,67 @@
+<h1> Employee List! <span type="button" class="pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="resetForm()">
+  Add
+</span></h1>
+<!-- Button trigger modal -->
+<div class="bs-example" data-example-id="striped-table">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Job Title</th>
+        <th>Department</th>
+        <th>Annual Salary</th>
+        <th>Created At</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employeeList">
+        <th scope="row">{{employee.name}}</th>
+        <td>{{employee.job_title}}</td>
+        <td>{{employee.department}}</td>
+        <td>{{employee.annual_salary}}</td>
+        <td>{{employee.created_at | date}}</td>
+        <td>
+          <button type="button" class="btn btn-success" (click)="editUser($event, employee)" data-toggle="modal" data-target="#myModal">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="deleteUser($event, employee)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ngb-pagination [collectionSize]="employeeCount" [(pageSize)]="pageSize"  [boundaryLinks]="true" [(page)]="page" size="sm" (pageChange)="paginateEmployee()"></ngb-pagination>
+</div>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Employee</h4>
+      </div>
+      <div class="modal-body">
+        <form #f="ngForm" (submit)="onSubmit(f.value)" id="employeeForm">
+          <div class="form-group">
+            <label for="employee_name">Employee Name</label>
+            <input type="text" [(ngModel)]="employeename" name="employeename" class="form-control" id="employeename" placeholder="Employee Name">
+            <input type="hidden" [(ngModel)]="employeeid" name="employeeid" class="form-control" id="employeeid">
+          </div>
+          <div class="form-group">
+            <label for="job_title">Job title</label>
+            <input type="text" [(ngModel)]="job_title" name="job_title" class="form-control" id="job_title" placeholder="Job title">
+          </div>
+          <div class="form-group">
+            <label for="department">Department</label>
+            <input type="text" [(ngModel)]="department" name="department" class="form-control" id="department" placeholder="Department">
+          </div>
+          <div class="form-group">
+            <label for="annual_salary">Annual Salary</label>
+            <input type="text" [(ngModel)]="annual_salary" name="annual_salary" class="form-control" id="annual_salary" placeholder="Annual salary">
+          </div>
+          <button class="btn btn-default" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
