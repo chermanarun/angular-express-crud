@@ -1,20 +1,25 @@
 # angular-express-crud
 Express, Mongodb, Angular2, Nodejs
 
-Start server in command prompt with 
+## Development server
+in command prompt locate server using `cd server`
 
-cd server
-npm install 
-npm start
+Run `npm install` for a installing dependencies
 
-it run in
-http://localhost:4000
+Run `npm start` for dev server
 
-Start client in command prompt with 
+Navigate to `http://localhost:4000/`.
 
-cd client
-npm install 
-npm start
+## Client Angular2
 
-it run in
-http://localhost:3000
+in command prompt locate server using `cd client`
+
+Run `npm install` for a installing dependencies
+
+Run `npm start` for client server
+
+Navigate to `http://localhost:3000/`.The app will automatically reload if you change any of the source files.
+
+## Further help
+
+To get more help on the `angular-quickstrat`
